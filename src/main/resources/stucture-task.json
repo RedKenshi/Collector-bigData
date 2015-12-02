@@ -1,0 +1,30 @@
+{
+  "task":{
+    "class":"summoner",
+    "method":"get",
+    "parametersMethod":[
+                        {
+                          "type":"ArrayList<Integer>"
+                        }
+                       ],
+    "parameters":[
+                  {
+                    "value":"20152354"
+                  },
+                  {
+                    "value":"20152354"
+                  },
+                  {
+                    "value":"20152354"
+                  },
+                  {
+                    "value":"20152354"
+                  },
+                  {
+                    "value":"20152354"
+                  }
+                 ],
+    "region":"euw",
+    "priority":"HIGH"
+  }
+}
