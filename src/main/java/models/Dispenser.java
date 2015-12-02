@@ -44,7 +44,7 @@ public class Dispenser extends Thread{
                     if(nextTask != null){
                         Collector aFreeCollector = null;
                         while(collectorNeeded){
-                            aFreeCollector = theAdministrator.getAFreeCollector(nextTask.getRegion());
+                            aFreeCollector = theAdministrator.getAFreeCollector(nextTask.getRegion(),nextTask.getPriority());
                             if(aFreeCollector != null){
                                 collectorNeeded = false;
                             }

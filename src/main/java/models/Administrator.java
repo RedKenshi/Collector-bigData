@@ -80,7 +80,8 @@ public class Administrator {
         //System.out.println("REQUETE SUR DES SUMMONERS :");
         String taskIdentifier = jsonRequest.getString("identifier");
         String taskRegion = jsonRequest.getString("region");
-        Task aTask = new Task(taskTarget,taskIdentifier,taskRegion);
+        String taskPriority = jsonRequest.getString("priority");
+        Task aTask = new Task(taskTarget,taskIdentifier,taskRegion,taskPriority);
         JSONArray jsonDataArray =  jsonRequest.getJSONArray("data");
         for(int i=0;i<jsonDataArray.length();i++) {
             JSONObject jsonData = jsonDataArray.getJSONObject(i);

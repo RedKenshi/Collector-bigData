@@ -49,7 +49,7 @@ public class Sender extends Amqp{
         String message;
 
         for(int moreMessage=0;moreMessage<64;moreMessage++){
-            message = "{\"request\":{\"type\":\"request\",\"target\":\"sum\",\"identifier\":\"id\",\"region\":\"euw\",\"data\":[\n";
+            message = "{\"request\":{\"type\":\"request\",\"target\":\"sum\",\"identifier\":\"id\",\"region\":\"euw\",\"priority\":\"normal\",\"data\":[\n";
             for(int i = 1;i<=4;i++){
                 int randomNumber = 10000000 + (int)(Math.random()*25000000);
                 message = message + "{"

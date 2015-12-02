@@ -8,13 +8,14 @@ import java.util.ArrayList;
 public class Task {
 
     private Integer nbReqDone;
-    private String target, identifier, region, name;
+    private String target, identifier, region, name, priority;
     private ArrayList<String> elements;
     private boolean TaskDone;
     private long startTime, lastReqTime, endTime;
 
-    public Task(String aTarget, String anIdentifier, String aRegion){
+    public Task(String aTarget, String anIdentifier, String aRegion, String aPriority){
         target = aTarget;
+        priority = aPriority;
         identifier = anIdentifier;
         region = aRegion;
         elements = new ArrayList<String>();
@@ -28,6 +29,10 @@ public class Task {
         execTime = execTime/1000000;
         String outputSummary = "\n-------------END-OF-TASK-------------\n" + "End of task : " + name + " by " + aCollector.getName() + "\n" + nbReqDone + " request done, in " + execTime + " ms, average : " + average + "ms/req" + "\n" + "------------------------------------\n";
         System.out.println(outputSummary);
+    }
+
+    public String getPriority() {
+        return priority;
     }
 
     public void setEndTime(){
