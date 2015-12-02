@@ -1,0 +1,27 @@
+{
+    "request":{
+        "type":"config",
+        "target":"keys",
+        "action":"generate",
+        "keys": [
+            {
+                "id":"0",
+                "value":"c0a4a6d5-d0b6-4c15-aaef-e9e8dadb3dd7",
+                "rateLimit":"1255",
+                "purpose":"normal"
+            },
+            {
+                "id":"1",
+                "value":"37c74a4c-6e96-4aea-bcb9-78e19637e846",
+                "rateLimit":"1255",
+                "purpose":"normal"
+            },
+            {
+                "id":"2",
+                "value":"a3c7934a-e165-48b7-99d7-ed36a62d1a00",
+                "rateLimit":"1255",
+                "purpose":"priority"
+            }
+        ]
+    }
+}
