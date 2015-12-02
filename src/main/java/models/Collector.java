@@ -10,7 +10,7 @@ public class Collector implements Runnable{
 
     private Administrator theAdministrator;
     private Key APIKey;
-    private String region, name;
+    private String region, name, purpose;
     private boolean taskFree, requestReady;
     private Integer id, rateLimit;
     private Task currentTask;
@@ -21,6 +21,7 @@ public class Collector implements Runnable{
         theAdministrator = anAdministrator;
         id = anId;
         delay = anAPIKey.getRateLimit();
+        purpose = anAPIKey.getPurpose();
         APIKey = anAPIKey;
         region = aRegion;
         taskFree = true;
@@ -30,7 +31,7 @@ public class Collector implements Runnable{
 
     public void showDetails(){
         System.out.println("Collector n°" + id + ", name : " + this.getName());
-        System.out.println("Key : " + APIKey.getValue() + ", waiting for a task : " + taskFree + ", ready to request : " + requestReady + ", region : " + region);
+        System.out.println("Key : " + APIKey.getValue() + ", waiting for a task : " + taskFree + ", ready to request : " + requestReady + ", region : " + region + ", purpose : " + purpose);
     }
 
     public void affectTask(Task aTask){
@@ -74,11 +75,11 @@ public class Collector implements Runnable{
     }
 
     public boolean matchTaskRegion(String aRegion){
-        boolean match = false;
-        if(region.equals(aRegion)){
-            match = true;
-        }
-        return match;
+        return region.equals(aRegion);
+    }
+
+    public boolean matchTaskPurpose(String aPurpose){
+        return purpose.equals(aPurpose);
     }
 
     public boolean isRequestReady(){

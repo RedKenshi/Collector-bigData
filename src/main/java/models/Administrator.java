@@ -4,19 +4,16 @@ package models;
  * Created by Maxime on 19/11/2015.
  */
 
-import com.rabbitmq.client.AMQP;
-import com.rabbitmq.client.Envelope;
 import controller.Receiver;
 import controller.Sender;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 
 /*An administrator object handle a set of keys, it is communicating
@@ -140,7 +137,7 @@ public class Administrator {
     public void generateKeys(JSONArray jsonKeyArray) throws JSONException{
         for(int i=0;i<jsonKeyArray.length();i++) {
             JSONObject aJsonKey = jsonKeyArray.getJSONObject(i);
-            Key aKey = new Key(aJsonKey.getString("value"),aJsonKey.getInt("rateLimit"));
+            Key aKey = new Key(aJsonKey.getString("value"),aJsonKey.getInt("rateLimit"),aJsonKey.getString("purpose"));
             APIkeys.add(aKey);
             nbKeys++;
         }
@@ -164,7 +161,7 @@ public class Administrator {
     public void showKeys(){
         System.out.println("--------------------\n--------KEYS-----(" + APIkeys.size() + ")\n--------------------");
         for (int i = 0; i < APIkeys.size();i++){
-            System.out.println("Clé n°" + String.valueOf(i) + ", valeur : " + APIkeys.get(i).getValue());
+            APIkeys.get(i).showDetails();
         }
     }
 
@@ -177,14 +174,16 @@ public class Administrator {
     }
 
     //return a taskFree collector in the set matching the given region
-    public Collector getAFreeCollector(String aRegion){
+    public Collector getAFreeCollector(String aRegion, String aPurpose){
         Collector aFreeCollector;
         aFreeCollector = null;
         for (Collector aCollector : collectors) {
-            if(aCollector.matchTaskRegion(aRegion)){
-                if(aCollector.isTaskFree()){
-                    aFreeCollector = aCollector;
-                    break;
+            if(aCollector.matchTaskPurpose(aPurpose)){
+                if(aCollector.matchTaskRegion(aRegion)){
+                    if(aCollector.isTaskFree()){
+                        aFreeCollector = aCollector;
+                        break;
+                    }
                 }
             }
         }

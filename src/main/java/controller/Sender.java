@@ -23,8 +23,8 @@ public class Sender extends Amqp{
     public Sender(Administrator anAdministrator){
 
         messages = new ArrayList<String>();
-        File fileKey = new File("C:\\Users\\Maxime\\Documents\\NetBeansProjects\\CollectorsAdministrator\\src\\ressources\\config-keygen.json");
-        File fileColl = new File("C:\\Users\\Maxime\\Documents\\NetBeansProjects\\CollectorsAdministrator\\src\\ressources\\config-collgen.json");
+        File fileKey = new File("..\\src\\main\\ressources\\config-keygen.json");
+        File fileColl = new File("..\\src\\main\\ressources\\config-collgen.json");
 
         String aString;
         String anotherString;
